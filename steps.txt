@@ -1,0 +1,3 @@
+https://raspberrytips.com/install-latest-python-raspberry-pi/
+https://stackoverflow.com/questions/38613316/how-to-upgrade-pip3
+
