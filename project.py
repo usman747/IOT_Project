@@ -63,10 +63,10 @@ print ("PROGRAM STARTED---------------------")
 
 while True:
     try:
-    #Temp & Humidity Sensor (DHT)
+    #Temperature Sensor (DHT)
         measuredTemp = grove_dht_pro.func1()
         #print("measured temp below me")
-        #print(sendTemp)
+        #print(measuredTemp)
         
     #Motion detection sensor
         motionDetection = grove_pir_motion_sensor.func1()
@@ -103,13 +103,22 @@ while True:
     #Downloading Sensor Values from Cloud
         ProjectBucket = database.child("PI")
         tempFromCloud = ProjectBucket.child("TEMPERATURE").get().val()
-        print("Temperature received from cloud")
-        print(tempFromCloud)
-        print(type(tempFromCloud))
+        #print("Temperature received from cloud")
+        #print(tempFromCloud)
+        ProjectBucket = database.child("PI")
+        personCountCloud = ProjectBucket.child("PERSON_COUNT").get().val()
         
+        ProjectBucket = database.child("PI")
+        dayOrNightCloud = ProjectBucket.child("DAY_OR_NIGHT").get().val()
+
+        ProjectBucket = database.child("PI")
+        waiterCalledCloud = ProjectBucket.child("WAITER_CALLED").get().val()
+    
+        ProjectBucket = database.child("PI")
+        brightnessCloud = ProjectBucket.child("BRIGHTNESS").get().val()
         
     # Actuate fan if condition true
-        if tempFromCloud > 27:
+        if tempFromCloud > 29:
             digitalWrite(fan,1)
             #print("HERE")
             
@@ -119,15 +128,15 @@ while True:
             
         
     # Actuate lights
-        if personCountFromCloud == 1:
-            digitalWrite(led1,1)
-        else 
-        digitalWrite(led2,1)
-        time.sleep(0.5)
-
-        digitalWrite(led1,0)     
-        digitalWrite(led2,0)
-        time.sleep(0.5)
+        if dayOrNightCloud == 0: #if night 
+            if personCountCloud > 0:
+                digitalWrite(led1,1) #2 customer, 1 light on
+        
+            if personCountCloud > 2: #4 customer, 2lights on
+                digitalWrite(led2,1)
+        else: #if daytime then turn off lights irrespective of customers
+            digitalWrite(led1,0)
+            digitalWrite(led2,0)
             
         
     except KeyboardInterrupt:   # Turn LED off before stopping
