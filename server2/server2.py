@@ -23,17 +23,16 @@ class Planner:
        
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
-        self.pddl_cold = open("./IOT_Project/AI Planning/cold.pddl",'r').read()
-        self.pddl_day_w_person = open("./IOT_Project/AI Planning/DayWithPerson.pddl",'r').read()
-        self.pddl_day_wo_person = open("./IOT_Project/AI Planning/DayWithoutPerson.pddl",'r').read()
-        self.pddl_hot = open("./IOT_Project/AI Planning/Hot.pddl",'r').read()
-        self.pddl_nigt_w_person = open("./IOT_Project/AI Planning/NightWithPerson.pddl",'r').read()
-        self.pddl_night_wo_person = open("./IOT_Project/AI Planning/NightWithoutPerson.pddl",'r').read()
+        self.pddl_cold = open("../AI Planning/cold.pddl",'r').read()
+        self.pddl_day_w_person = open("../AI Planning/DayWithPerson.pddl",'r').read()
+        self.pddl_day_wo_person = open("../AI Planning/DayWithoutPerson.pddl",'r').read()
+        self.pddl_hot = open("../AI Planning/Hot.pddl",'r').read()
+        self.pddl_nigt_w_person = open("../AI Planning/NightWithPerson.pddl",'r').read()
+        self.pddl_night_wo_person = open("../AI Planning/NightWithoutPerson.pddl",'r').read()
 
-        self.pddl_not_pressed = open("./IOT_Project/AI Planning/NotPressed.pddl",'r').read()
-        self.pddl_pressed = open("./IOT_Project/AI Planning/Pressed.pddl",'r').read()
-        self.pddl_domain = open("./IOT_Project/AI Planning/domain.pddl",'r').read()
-        print(self.pddl_domain)
+        self.pddl_not_pressed = open("../AI Planning/NotPressed.pddl",'r').read()
+        self.pddl_pressed = open("../AI Planning/Pressed.pddl",'r').read()
+        self.pddl_domain = open("../AI Planning/domain.pddl",'r').read()
         
     def on_connect(self,clien, userdata, flags, rc):
         print("Connected with result code "+str(rc))
