@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 #
-# GrovePi Example for using the Grove Temperature & Humidity Sensor Pro 
-# (http://www.seeedstudio.com/wiki/Grove_-_Temperature_and_Humidity_Sensor_Pro)
+# GrovePi Example for using the Grove Ultrasonic Ranger (http://www.seeedstudio.com/wiki/Grove_-_Ultrasonic_Ranger)
 #
-# The GrovePi connects the Raspberry Pi and Grove sensors.  
-# You can learn more about GrovePi here:  http://www.dexterindustries.com/GrovePi
+# The GrovePi connects the Raspberry Pi and Grove sensors.  You can learn more about GrovePi here:  http://www.dexterindustries.com/GrovePi
 #
 # Have a question about this example?  Ask on the forums here:  http://forum.dexterindustries.com/c/grovepi
 #
@@ -34,40 +32,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
+
 import grovepi
-import math
-# Connect the Grove Temperature & Humidity Sensor Pro to digital port D4
-# This example uses the blue colored sensor.
+
+# Connect the Grove Ultrasonic Ranger to digital port D4
 # SIG,NC,VCC,GND
-sensor = 6  # The Sensor goes on digital port 6.
-
-# temp_humidity_sensor_type
-# Grove Base Kit comes with the blue sensor.
-blue = 0    # The Blue colored sensor.
-white = 1   # The White colored sensor.
-
-T=0
-
+ultrasonic_ranger = 8
 def func1():
     while True:
         try:
-            # This example uses the blue colored sensor. 
-            # The first parameter is the port, the second parameter is the type of sensor.
-            [temp,humidity] = grovepi.dht(sensor,blue)  
-            if math.isnan(temp) == False and math.isnan(humidity) == False:
-                print("temp = %.02f C humidity =%.02f%%"%(temp, humidity))
-                if temp == "NaN":
-                    print("wrong temp read..problem in sensor")
-                else:
-                    return temp
-            #if math.isnan(temp) == False:
-                #print("temp = %.02f C "%(temp))
-                #T=temp
-                #return T
-                #break
+            # Read distance value from Ultrasonic
+            res = grovepi.ultrasonicRead(ultrasonic_ranger)
+            #print(res)
+            #print(result)
+            return res
+            #print(grovepi.ultrasonicRead(ultrasonic_ranger))
 
+        except TypeError:
+            print ("Error")
         except IOError:
-            print ("ErrorInDHT")
+            print ("Error")
+
 
 if __name__ == '__main__':
     func1()
