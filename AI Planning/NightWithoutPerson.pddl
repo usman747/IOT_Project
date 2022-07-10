@@ -1,4 +1,4 @@
-(define (problem NightWithPerson) (:domain smartcafe)
+(define (problem NightWithoutPerson) (:domain smartcafe)
 (:objects 
 tempHigh tempLow - temperatureSensor 
 lightOn lightOff - lightSensor ; Lighton=day lightoff=night
