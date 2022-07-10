@@ -23,7 +23,7 @@ class Planner:
        
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
-        self.pddl_cold = open("../AI_Planning/cold.pddl",'r').read()
+        self.pddl_cold = open("../AI_Planning/Cold.pddl",'r').read()
         self.pddl_day_w_person = open("../AI_Planning/DayWithPerson.pddl",'r').read()
         self.pddl_day_wo_person = open("../AI_Planning/DayWithoutPerson.pddl",'r').read()
         self.pddl_hot = open("../AI_Planning/Hot.pddl",'r').read()
