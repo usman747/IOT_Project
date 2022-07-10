@@ -60,23 +60,42 @@
 
 )
 
-(:action TurnOnLights
+(:action  TurnOnLightsNight
     :parameters 
     (?SomeoneInTheRoom ?SomeoneNotInTheRoom - PIRSensor      ; object= sensors and actuators
     ?LightSwitchOff ?LightSwitchOn - LED
     ?LowLightLevel ?HighLightLevel - lightSensor)    ; hight light(1) = day   low light(0)= night
     :precondition (and (nightLightOff ?LowLightLevel ?LightSwitchOff) (movementDeteced ?SomeoneInTheRoom) )
-    :effect (and (nightLightOn ?LowLightLevel ?LightSwitchOn) (not(nightLightOff ?HighLightLevel ?LightSwitchOff)))
+    :effect (and (nightLightOn ?LowLightLevel ?LightSwitchOn) (not(nightLightOff ?LowLightLevel ?LightSwitchOff)))
 )
 
-(:action TurnOffLights
+(:action  TurnOffLightsNight
     :parameters 
     (?SomeoneInTheRoom ?SomeoneNotInTheRoom - PIRSensor      ; object= sensors and actuators
     ?LightSwitchOff ?LightSwitchOn - LED
     ?LowLightLevel ?HighLightLevel - lightSensor)    ; hight light(1) = day   low light(0)= night
-    :precondition (and (dayLightOn ?HighLightLevel ?LightSwitchOn) )
-    :effect (and (dayLightOff ?HighLightLevel ?LightSwitchOff) (not(nightLightOn ?LowLightLevel ?LightSwitchOn)))
+    :precondition (and (nightLightOn ?LowLightLevel ?LightSwitchOn) (movementNotDeteced ?SomeoneNotInTheRoom) )
+    :effect (and (nightLightOff ?LowLightLevel ?LightSwitchOff) (not(nightLightOn?LowLightLevel ?LightSwitchOn)))
 )
+
+(:action TurnOnLightsDay
+    :parameters 
+    (?SomeoneInTheRoom ?SomeoneNotInTheRoom - PIRSensor      ; object= sensors and actuators
+    ?LightSwitchOff ?LightSwitchOn - LED
+    ?LowLightLevel ?HighLightLevel - lightSensor)    ; hight light(1) = day   low light(0)= night
+    :precondition (and (dayLightOff ?HighLightLevel ?LightSwitchOff) (movementDeteced ?SomeoneInTheRoom) )
+    :effect (and (dayLightOn ?HighLightLevel ?LightSwitchON) (not(dayLightOff ?HighLightLevel ?LightSwitchOff)))
+)
+
+(:action TurnOffLightsDay
+    :parameters 
+    (?SomeoneInTheRoom ?SomeoneNotInTheRoom - PIRSensor      ; object= sensors and actuators
+    ?LightSwitchOff ?LightSwitchOn - LED
+    ?LowLightLevel ?HighLightLevel - lightSensor)    ; hight light(1) = day   low light(0)= night
+    :precondition (and (dayLightOn ?HighLightLevel ?LightSwitchON) (movementNotDeteced ?SomeoneNotInTheRoom) )
+    :effect (and (dayLightOff ?HighLightLevel ?LightSwitchOff) (not(dayLightOff ?HighLightLevel ?LightSwitchON)))
+)
+
 
 (:action  TurnOnFan
     :parameters (?highTemp ?lowTemp - temperatureSensor
