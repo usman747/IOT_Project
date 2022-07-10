@@ -11,11 +11,11 @@ waiter noWaiter - bell
 
 (:init
     ;todo: put the initial state's facts and numeric values here
-
-    (nightLightOn lightoff LEDOn)
+    (dayLightOff lightON LEDOff)
+    (movementDeteced personInRoom)
 )
 
-(:goal ( dayLightOff lightOn LEDOff)
+(:goal ( dayLightON lightON LEDOn)
     ;todo: put the goal condition here
 )
 

@@ -12,7 +12,7 @@ waiter noWaiter - bell
 (:init
     ;todo: put the initial state's facts and numeric values here
 
-    (dayLightOff lightOn LEDOff)
+    (nightLightOff lightOff LEDOff)
     (movementDeteced personInRoom) 
 )
 
