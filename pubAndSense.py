@@ -14,7 +14,7 @@ import time
 import random
 import json
 
-time.sleep(1)#LET THE PI TURN ON AND CONNECT TO WIFI
+time.sleep(0.1)#LET THE PI TURN ON AND CONNECT TO WIFI
 
 motionDetection = 0
 lightSensor = 0
@@ -118,7 +118,7 @@ while True:
             elif customerInCafe == 0:
                 ret= client.publish("data/daynight",get_message("day_without_person"))
             
-        time.sleep(3)
+        time.sleep(4)
         #print("Stopped...")  
         
     except KeyboardInterrupt:   # Turn LED off before stopping
