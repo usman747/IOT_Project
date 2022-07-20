@@ -59,7 +59,7 @@ while True:
     #Temperature Sensor (DHT)
         measuredTemp = grove_dht_pro.func1()
         measuredTemp = int(measuredTemp)
-        if measuredTemp > 29:
+        if measuredTemp > 28:
             tempToSend = 1 #hot
         else:
             tempToSend = 0 #cold

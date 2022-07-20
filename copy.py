@@ -4,10 +4,8 @@ import paho.mqtt.client as mqtt
 import json
 import requests
 
-import pyrebase
 import grovepi
 from grovepi import *
-import datetime
 
 cafeLight = 3
 personInCafe = 5
@@ -23,17 +21,6 @@ digitalWrite(cafeLight,0)
 digitalWrite(personInCafe,0)
 digitalWrite(fan,0)
 digitalWrite(buzzer,0)
-
-config = {     
-  "apiKey": "AIzaSyCiZrawvyy5WhqXWDKCK3BiVEg9Lixgl8o",
-  "authDomain": "projectiot-4500d.firebaseapp.com",
-  "databaseURL": "https://projectiot-4500d-default-rtdb.firebaseio.com",
-  "storageBucket": "projectiot-4500d.appspot.com"
-}
-
-firebase = pyrebase.initialize_app(config) 
-database = firebase.database()
-
 #on=False
 #while True:
 #    #print("HERERER")
@@ -75,111 +62,76 @@ class Planner:
         message = msg.payload.decode()
         message = json.loads(message)
         action = message["action"]
-        #print("Day OR Night action is:",message["action"])
+        print("Day OR Night action is:",message["action"])
         """
           YOUR ACTION ACTION CODE
         
         """
-        #print(last_state_1) 
+        print(last_state_1) 
              
     #Actuate lights
         if action == "turnonlightsnight":
             if last_state_1 != action:
-                #print(action)
+                print(action)
                 digitalWrite(cafeLight,1)
                 digitalWrite(personInCafe,1)
-                ear = datetime.datetime.now()
-                database.child("PI").child("CAFE_LIGHT").set(1)
-                database.child("PI").child("CUSTOMER_IN_CAFE").set(1)
-                now = datetime.datetime.now()
-                print("time taken:",(now-ear).total_seconds())
                 last_state_1 =  action
 
-            
-        elif action == "turnofflightsnight":
-            if last_state_1 != action:
-                #print(action)
-                digitalWrite(cafeLight,0)
-                digitalWrite(personInCafe,0)
-                database.child("PI").child("CAFE_LIGHT").set(0)
-                database.child("PI").child("CUSTOMER_IN_CAFE").set(0)
-                last_state_1 =  action
-
-        
-        elif action == "turnonlightsday":
-            if last_state_1 != action:
-                #print(action)
-                digitalWrite(cafeLight,0)
-                digitalWrite(personInCafe,1)
-                database.child("PI").child("CAFE_LIGHT").set(0)
-                database.child("PI").child("CUSTOMER_IN_CAFE").set(1)
-                last_state_1 =  action
-
-                
-        elif action == "turnofflightsday":
-            if last_state_1 != action:
-                #print(action)
-                digitalWrite(cafeLight,0)
-                digitalWrite(personInCafe,0)
-                database.child("PI").child("CAFE_LIGHT").set(0)
-                database.child("PI").child("CUSTOMER_IN_CAFE").set(0)
-                last_state_1 =  action
+       
 
             
     
     def on_message_hot_or_cold(self,client, userdata, msg):
+        return
         global last_state_2
         message = msg.payload.decode()
         message = json.loads(message)
         action = message["action"]
 
-        #print("Hot OR Cold action is:",message["action"])
+        print("Hot OR Cold action is:",message["action"])
         """
           YOUR ACTION ACTION CODE
         
         """
-        #print(last_state_2) 
+        print(last_state_2) 
         #Actuate fan if plan is "hot"
         if action == "turnonfan":
             if last_state_2 != action:
-                #print(action)
+                print(action)
                 digitalWrite(fan,1)
-                database.child("PI").child("FAN").set(1)
                 last_state_2 =  action
         elif action == "turnofffan":
             if last_state_2 != action:
-                #print(action)
+                print(action)
                 digitalWrite(fan,0)
-                database.child("PI").child("FAN").set(0)
                 last_state_2 =  action
         
     
     def on_message_waiter_called_or_not(self,client, userdata, msg):
+        return
         global last_state_3
         message = msg.payload.decode()
         message = json.loads(message)
         action = message["action"]
 
-        #print("Waiter Called action is:",message["action"])
+        print("Waiter Called action is:",message["action"])
         
         """
           YOUR ACTION ACTION CODE
         
         """
-        #print(last_state_3) 
+        print(last_state_3) 
         #Actuate buzzer if pressed
         if action == "turnonbell":
             if last_state_3 != action:
-                #print(action) 
+                print(action) 
                 digitalWrite(buzzer,1)
-                database.child("PI").child("BELL").set(1)
                 last_state_3 =  action
             
         elif action == "turnoffbell":
             if last_state_3 != action:
-                #print(action)
+                print(action)
                 digitalWrite(buzzer,0)
-                database.child("PI").child("BELL").set(0)
                 last_state_3 =  action
             
     def connect_to_mqtt(self):
