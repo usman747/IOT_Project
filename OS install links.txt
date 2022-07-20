@@ -1,0 +1,10 @@
+
+https://sourceforge.net/projects/dexterindustriesraspbianflavor/
+https://www.dexterindustries.com/howto/install-raspbian-for-robots-image-on-an-sd-card/
+https://www.bw-cloud.org/de/erste_schritte
+https://sourceforge.net/projects/dexterindustriesraspbianflavor/files/
+https://www.dexterindustries.com/howto/change-the-hostname-of-your-pi/
+https://github.com/DexterInd/Raspbian_For_Robots
+https://www.dexterindustries.com/howto/install-raspbian-for-robots-image-on-an-sd-card/
+https://www.dexterindustries.com/howto/install-raspbian-for-robots-image-on-an-sd-card/
+https://github.com/DexterInd/GrovePi/tree/master/Projects

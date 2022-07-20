@@ -1,0 +1,10 @@
+https://www.google.com/search?q=connect+raspberry+pi+with+google+firebase&oq=connect+raspberry+pi+with+google+firebase&aqs=chrome..69i57j33i160l2j33i22i29i30.6710j0j7&sourceid=chrome&ie=UTF-8
+https://www.hackster.io/ahmedibrrahim/iot-using-raspberry-pi-and-firebase-and-android-dbe61d
+https://console.firebase.google.com/u/3/project/projectiot-4500d/database/projectiot-4500d-default-rtdb/data
+https://tutorial.cytron.io/2020/12/09/send-data-to-firebase-using-raspberry-pi/
+
+https://github.com/embeddedlab786/IOT_Control_4Load_Firebase/blob/main/IOT_Control_4Load.aia
+https://www.youtube.com/watch?v=FZBHtEBXjks&ab_channel=MuhammadAnsar
+https://www.hackster.io/MissionCritical/iot-weather-station-using-firebase-and-mit-app-inventor-906050
+https://www.dexterindustries.com/howto/auto-run-python-programs-on-the-raspberry-pi/
+https://bc-robotics.com/tutorials/setting-cron-job-raspberry-pi/
